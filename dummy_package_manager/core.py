@@ -4,7 +4,7 @@ dependencies.
 
 """
 
-import os
+import os.path
 import tempfile
 import shutil
 from subprocess import run
@@ -66,10 +66,12 @@ class DummyPackage:
         package = {
             "name": self.package_name,
             "source_dir": None,
+            "is_installed": False,
             "deps": [
                 {
                     "name": requirement,
-                    "source_dir": None
+                    "source_dir": None,
+                    "is_installed": False
                 }
                 for requirement in self.requirements
             ]
@@ -117,13 +119,21 @@ class DummyPackage:
         Install the dummy package and optional dependencies using pip.
         """
         for deps in self.package["deps"]:
+            index = self.package["deps"].index(deps)
             run(split(f"python -m pip install {deps['source_dir']} --no-input --no-dependencies"))
+            self.package["deps"][index]["is_installed"] = True
         run(split(f"python -m pip install {self.package['source_dir']} --no-input --no-dependencies"))
+        self.package["is_installed"] = True
 
     def uninstall(self):
         """
         Uninstall the dummy package and optional dependencies using pip.
         """
         for deps in self.package["deps"]:
-            run(split(f"python -m pip uninstall {deps['name']} --yes"))
-        run(split(f"python -m pip uninstall {self.package['name']} --yes"))
+            if deps["is_installed"]:
+                index = self.package["deps"].index(deps)
+                run(split(f"python -m pip uninstall {deps['name']} --yes"))
+                self.package["deps"][index]["is_installed"] = False
+        if self.package["is_installed"]:
+            run(split(f"python -m pip uninstall {self.package['name']} --yes"))
+            self.package["is_installed"] = False

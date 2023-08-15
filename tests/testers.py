@@ -2,6 +2,7 @@
 This module provides the DummyPackageTester class for testing the DummyPackage class.
 """
 import os.path
+import shutil
 from importlib import import_module
 from dummy_package_manager import DummyPackage
 
@@ -26,6 +27,14 @@ class DummyPackageTester(DummyPackage):
             temp_dir (str, optional): Temporary directory path to use for package creation.
         """
         super().__init__(package_name, requirements, temp_dir)
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        """
+         Context manager exit method.
+         Uninstalls the dummy package and its optional dependencies, and cleans up temporary directory.
+        """
+        assert self.uninstall_tester()
+        shutil.rmtree(self.temp_dir)
 
     def install_tester(self):
         """
@@ -60,26 +69,3 @@ class DummyPackageTester(DummyPackage):
             return not main_module and not dep_modules
         except ImportError:
             return True
-
-
-def __exit___tester(tester):
-    """
-    Verify the cleanup of the package's temporary directory and its module(s) after exiting the context.
-
-    Args:
-        tester (DummyPackageTester): The DummyPackageTester instance representing the package tester to be verified.
-
-    Returns:
-        bool: True if the package's temporary directory and module(s) are cleaned up, False otherwise.
-    """
-    is_path = os.path.exists(tester.temp_dir)
-    is_module = None
-    try:
-        main_module = import_module(tester.package["name"])
-        dep_modules = False
-        if tester.package["deps"] is not []:
-            dep_modules = [import_module(deps["name"]) for deps in tester.package["deps"]]
-        is_module = not main_module and not dep_modules
-    except ImportError:
-        is_module = True
-    return not is_path and is_module
