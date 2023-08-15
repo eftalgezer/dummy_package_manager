@@ -9,26 +9,9 @@ from dummy_package_manager import DummyPackage
 class DummyPackageTester(TestCase, DummyPackage):
     """
     A class for testing the DummyPackage class and its functionality.
-
-    Args:
-        package_name (str): The name of the dummy package to test.
-        requirements (list): A list of package names for optional dependencies.
-        temp_dir (str): Temporary directory path to use for package creation.
     """
-
-    def __init__(self, package_name, requirements=None, temp_dir=None):
-        """
-        Initialize a DummyPackageTester instance.
-
-        Args:
-            package_name (str): The name of the dummy package to test.
-            requirements (list, optional): A list of package names for optional dependencies.
-            temp_dir (str, optional): Temporary directory path to use for package creation.
-        """
-        super().__init__(package_name, requirements, temp_dir)
-
     def setUp(self) -> None:
-        self.v = setup_with_context_manager(self, DummyPackage)
+        self.v = setup_with_context_manager(self, DummyPackage(self.package_name, self.requirements, self.temp_dir))
 
     def install_tester(self):
         """
