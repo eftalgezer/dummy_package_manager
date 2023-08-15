@@ -1,8 +1,9 @@
 """
 This module provides the DummyPackageTester class for testing the DummyPackage class.
 """
+
+import shutil
 from importlib import import_module
-from unittest.mock import Mock
 from dummy_package_manager import DummyPackage
 
 
@@ -26,8 +27,10 @@ class DummyPackageTester(DummyPackage):
             temp_dir (str, optional): Temporary directory path to use for package creation.
         """
         super().__init__(package_name, requirements, temp_dir)
-        self.mock = Mock()
-        self.mock.__exit__ = Mock(return_value=False)
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        assert self.uninstall_tester()
+        shutil.rmtree(self.temp_dir)
 
     def install_tester(self):
         """
