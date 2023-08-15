@@ -25,8 +25,7 @@ class DummyPackageTester(DummyPackage):
             requirements (list, optional): A list of package names for optional dependencies.
             temp_dir (str, optional): Temporary directory path to use for package creation.
         """
-        super().__init__()
-        DummyPackage.__init__(self, package_name, requirements, temp_dir)
+        super().__init__(package_name, requirements, temp_dir)
 
     def install_tester(self):
         """
