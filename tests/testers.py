@@ -2,6 +2,7 @@
 This module provides the DummyPackageTester class for testing the DummyPackage class.
 """
 
+import os.path
 from importlib import import_module
 from dummy_package_manager import DummyPackage
 
@@ -57,9 +58,7 @@ class DummyPackageTester(DummyPackage):
             dep_modules = False
             if self.package["deps"] is not []:
                 dep_modules = [import_module(deps["name"]) for deps in self.package["deps"]]
-            if main_module or dep_modules:
-                return False
-            return True
+            return not main_module and not dep_modules
         except ImportError:
             return True
 
@@ -74,13 +73,13 @@ def __exit___tester(tester):
     Returns:
         bool: True if the package's temporary directory and module(s) are cleaned up, False otherwise.
     """
-    is_path = os.path.exists(tester.dummy_package.temp_dir)
+    is_path = os.path.exists(tester.temp_dir)
     is_module = False
     try:
-        main_module = import_module(tester.dummy_package.package["name"])
+        main_module = import_module(tester.package["name"])
         dep_modules = False
-        if tester.dummy_package.package["deps"]:
-            dep_modules = any([import_module(deps["name"]) for deps in tester.dummy_package.package["deps"]])
+        if tester.package["deps"]:
+            dep_modules = any(import_module(deps["name"]) for deps in tester.package["deps"])
         is_module = main_module or dep_modules
     except ImportError:
         is_module = False
