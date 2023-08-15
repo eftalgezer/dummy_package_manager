@@ -76,13 +76,13 @@ class DummyPackage:
         }
         for dep in package["deps"]:
             index = package["deps"].index(dep)
-            package["deps"][index]["source_dir"] = os.path.join(
-                self.temp_dir,
-                package["deps"][index]["name"],
-                package["deps"][index]["name"]
-            )
+            package["deps"][index]["source_dir"] = os.path.join(self.temp_dir, package["deps"][index]["name"])
             os.makedirs(package["deps"][index]["source_dir"])
-            init_file = os.path.join(package["deps"][index]["source_dir"], "__init__.py")
+            init_file = os.path.join(
+                package["deps"][index]["source_dir"],
+                package["deps"][index]["name"],
+                "__init__.py"
+            )
             with open(init_file, "w", encoding="utf-8"):
                 pass
             setup_content = "from setuptools import setup, find_packages\n\n" \
@@ -93,12 +93,12 @@ class DummyPackage:
                             "    packages=find_packages(),\n" \
                             "    install_requires=requirements\n" \
                             ")\n"
-            setup_file = os.path.join(package["deps"][index]["source_dir"], "../setup.py")
+            setup_file = os.path.join(package["deps"][index]["source_dir"], "setup.py")
             with open(setup_file, "w") as f:
                 f.write(setup_content)
         package["source_dir"] = os.path.join(self.temp_dir, package["name"])
         os.makedirs(package["source_dir"])
-        init_file = os.path.join(package["source_dir"], "__init__.py")
+        init_file = os.path.join(package["source_dir"], package["name"], "__init__.py")
         with open(init_file, "w", encoding="utf-8"):
             pass
         setup_content = "from setuptools import setup, find_packages\n\n" \
@@ -109,7 +109,7 @@ class DummyPackage:
                         "    packages=find_packages(),\n" \
                         "    install_requires=requirements\n" \
                         ")\n"
-        setup_file = os.path.join(package["source_dir"], "../setup.py")
+        setup_file = os.path.join(package["source_dir"], "setup.py")
         with open(setup_file, "w") as f:
             f.write(setup_content)
         return package
