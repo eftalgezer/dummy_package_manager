@@ -27,7 +27,6 @@ class DummyPackageTester(DummyPackage):
         """
         super().__init__(package_name, requirements, temp_dir)
 
-
     def install_tester(self):
         """
         Install the dummy package and optional dependencies using pip, and verify installation.
@@ -58,6 +57,31 @@ class DummyPackageTester(DummyPackage):
             dep_modules = False
             if self.package["deps"] is not []:
                 dep_modules = [import_module(deps["name"]) for deps in self.package["deps"]]
-            return not main_module and not dep_modules
+            if main_module or dep_modules:
+                return False
+            return True
         except ImportError:
             return True
+
+
+def __exit___tester(tester):
+    """
+    Verify the cleanup of the package's temporary directory and its module(s) after exiting the context.
+
+    Args:
+        tester (DummyPackageTester): The DummyPackageTester instance representing the package tester to be verified.
+
+    Returns:
+        bool: True if the package's temporary directory and module(s) are cleaned up, False otherwise.
+    """
+    is_path = os.path.exists(tester.dummy_package.temp_dir)
+    is_module = False
+    try:
+        main_module = import_module(tester.dummy_package.package["name"])
+        dep_modules = False
+        if tester.dummy_package.package["deps"]:
+            dep_modules = any([import_module(deps["name"]) for deps in tester.dummy_package.package["deps"]])
+        is_module = main_module or dep_modules
+    except ImportError:
+        is_module = False
+    return not is_path and not is_module
