@@ -19,6 +19,7 @@ def test_DummyPackage():
         assert not tester.package["is_installed"]
         assert tester.install_tester()
         assert tester.package["is_installed"]
+        tester.mock.__exit__.assert_called_with(None, None, None)
     with DummyPackageTester("package1") as tester:
         assert tester.package
         assert tester.package["name"] == "package1"
@@ -29,3 +30,4 @@ def test_DummyPackage():
         assert not tester.package["is_installed"]
         assert tester.install_tester()
         assert tester.package["is_installed"]
+        tester.mock.__exit__.assert_called_with(None, None, None)
