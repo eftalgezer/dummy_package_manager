@@ -2,7 +2,7 @@
 [![PyPI version](https://badge.fury.io/py/dummy_package_manager.svg)](https://badge.fury.io/py/dummy_package_manager)
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/dummy_package_manager.svg)](https://pypi.python.org/pypi/dummy_package_manager/)
 [![Python package](https://github.com/eftalgezer/dummy_package_manager/actions/workflows/python-package.yml/badge.svg)](https://github.com/eftalgezer/dummy_package_manager/actions/workflows/python-package.yml)
-[![Check requirements](https://github.com/eftalgezer/dummy_package_manager/actions/workflows/dummy_package_manager.yml/badge.svg)](https://github.com/eftalgezer/dummy_package_manager/actions/workflows/dummy_package_manager.yml)
+[![Check requirements](https://github.com/eftalgezer/dummy_package_manager/actions/workflows/check_requirements/yml/badge.svg)](https://github.com/eftalgezer/dummy_package_manager/actions/workflows/check_requirements.yml)
 [![codecov](https://codecov.io/gh/eftalgezer/dummy_package_manager/branch/main/graph/badge.svg?token=Q9TJFIN1U1)](https://codecov.io/gh/eftalgezer/dummy_package_manager)
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/f0c0e8e9cf6a4151ac39bbad05e3c535)](https://app.codacy.com/gh/eftalgezer/dummy_package_manager/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage)
 [![PyPI download month](https://img.shields.io/pypi/dm/dummy_package_manager.svg)](https://pypi.python.org/pypi/dummy_package_manager/)
@@ -11,7 +11,7 @@
 ![GitHub all releases](https://img.shields.io/github/downloads/eftalgezer/dummy_package_manager/total?style=flat)
 [![GitHub contributors](https://img.shields.io/github/contributors/eftalgezer/dummy_package_manager.svg)](https://github.com/eftalgezer/dummy_package_manager/graphs/contributors/)
 [![CodeFactor](https://www.codefactor.io/repository/github/eftalgezer/dummy_package_manager/badge)](https://www.codefactor.io/repository/github/eftalgezer/dummy_package_manager)
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/f0c0e8e9cf6a4151ac39bbad05e3c535)](https://app.codacy.com/gh/eftalgezer/dummy_package_manager/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)[![PyPI license](https://img.shields.io/pypi/l/dummy_package_manager.svg)](https://pypi.python.org/pypi/dummy_package_manager/)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/36a170ba82d644bd936095d60b097572)](https://app.codacy.com/gh/eftalgezer/dummy_package_manager/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 
 Effortlessly create and manage dummy Python packages.
 
