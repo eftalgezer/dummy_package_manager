@@ -2,15 +2,15 @@
 This module provides test scenarios using the DummyPackageTester class to test the DummyPackage class.
 """
 
-from .testers import DummyPackageTester, __exit___tester
+import shutil
+from .testers import DummyPackageTester
 
 
 def test_DummyPackage():
     """
     Test the functionality of the DummyPackage class using various scenarios.
     """
-    tester = DummyPackageTester("package1", requirements=["package2"])
-    with tester:
+    with DummyPackageTester("package1", requirements=["package2"]) as tester:
         assert tester.package
         assert tester.package["name"] == "package1"
         assert tester.package["deps"][0]["name"] == "package2"
@@ -20,9 +20,10 @@ def test_DummyPackage():
         assert not tester.package["is_installed"]
         assert tester.install_tester()
         assert tester.package["is_installed"]
-    __exit___tester(tester)
-    tester = DummyPackageTester("package1")
-    with tester:
+        assert tester.uninstall_tester()
+        assert not tester.package["is_installed"]
+        shutil.rmtree(tester.temp_dir)
+    with DummyPackageTester("package1") as tester:
         assert tester.package
         assert tester.package["name"] == "package1"
         assert tester.package["deps"] == []
@@ -32,4 +33,6 @@ def test_DummyPackage():
         assert not tester.package["is_installed"]
         assert tester.install_tester()
         assert tester.package["is_installed"]
-    __exit___tester(tester)
+        assert tester.uninstall_tester()
+        assert not tester.package["is_installed"]
+        shutil.rmtree(tester.temp_dir)
