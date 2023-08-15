@@ -4,6 +4,7 @@ This module provides the DummyPackageTester class for testing the DummyPackage c
 
 import shutil
 from importlib import import_module
+from unittest.mock import patch
 from dummy_package_manager import DummyPackage
 
 
@@ -29,8 +30,9 @@ class DummyPackageTester(DummyPackage):
         super().__init__(package_name, requirements, temp_dir)
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        assert self.uninstall_tester()
-        shutil.rmtree(self.temp_dir)
+        with patch.object(DummyPackage, "__exit__", return_value=None):
+            assert self.uninstall_tester()
+            shutil.rmtree(self.temp_dir)
 
     def install_tester(self):
         """
