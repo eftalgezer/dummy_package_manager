@@ -7,7 +7,7 @@ dependencies.
 import os.path
 import tempfile
 import shutil
-from subprocess import run
+from subprocess import Popen, PIPE
 from shlex import split
 
 
@@ -120,10 +120,20 @@ class DummyPackage:
         """
         for deps in self.package["deps"]:
             index = self.package["deps"].index(deps)
-            run(split(f"python -m pip install {deps['source_dir']} --no-input --no-dependencies"))
-            self.package["deps"][index]["is_installed"] = True
-        run(split(f"python -m pip install {self.package['source_dir']} --no-input --no-dependencies"))
-        self.package["is_installed"] = True
+            with Popen(
+                    split(f"python -m pip install {deps['source_dir']} --no-input --no-dependencies"),
+                    stdout=PIPE
+            ) as command:
+                self.package["deps"][index]["is_installed"] = f"Successfully installed {deps['name']}" in command.stdout
+            if not self.package["deps"][index]["is_installed"]:
+                raise ImportError(f"{deps['name']} could not be installed")
+        with Popen(
+                split(f"python -m pip install {self.package['source_dir']} --no-input --no-dependencies"),
+                stdout=PIPE
+        ) as command:
+            self.package["is_installed"] = f"Successfully installed {self.package['name']}" in command.stdout
+        if not self.package["is_installed"]:
+            raise ImportError(f"{self.package['name']} could not be installed")
 
     def uninstall(self):
         """
@@ -132,8 +142,14 @@ class DummyPackage:
         for deps in self.package["deps"]:
             if deps["is_installed"]:
                 index = self.package["deps"].index(deps)
-                run(split(f"python -m pip uninstall {deps['name']} --yes"))
-                self.package["deps"][index]["is_installed"] = False
+                with Popen(
+                        split(f"python -m pip uninstall {deps['name']} --yes"), stdout=PIPE) as command:
+                    self.package["deps"][index]["is_installed"] = \
+                            f"Successfully uninstalled {deps['name']}" not in command.stdout
+                if self.package["deps"][index]["is_installed"]:
+                    raise ImportError(f"{deps['name']} could not be uninstalled")
         if self.package["is_installed"]:
-            run(split(f"python -m pip uninstall {self.package['name']} --yes"))
-            self.package["is_installed"] = False
+            with Popen(split(f"python -m pip uninstall {self.package['name']} --yes"), stdout=PIPE) as command:
+                self.package["is_installed"] = f"Successfully uninstalled {self.package['name']}" not in command.stdout
+        if self.package["is_installed"]:
+            raise ImportError(f"{self.package['name']} could not be uninstalled")
