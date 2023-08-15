@@ -27,9 +27,6 @@ class DummyPackageTester(DummyPackage):
         """
         super().__init__(package_name, requirements, temp_dir)
 
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        pass
-
     def install_tester(self):
         """
         Install the dummy package and optional dependencies using pip, and verify installation.
@@ -57,9 +54,11 @@ class DummyPackageTester(DummyPackage):
         self.uninstall()
         try:
             main_module = import_module(self.package["name"])
+            print(main_module)
             dep_modules = False
             if self.package["deps"] is not []:
                 dep_modules = [import_module(deps["name"]) for deps in self.package["deps"]]
+            print(dep_modules)
             return not main_module and not dep_modules
         except ImportError:
             return True
