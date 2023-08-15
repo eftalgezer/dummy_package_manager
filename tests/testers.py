@@ -1,13 +1,12 @@
 """
 This module provides the DummyPackageTester class for testing the DummyPackage class.
 """
-import os.path
-import shutil
 from importlib import import_module
+from unittest import TestCase
 from dummy_package_manager import DummyPackage
 
 
-class DummyPackageTester(DummyPackage):
+class DummyPackageTester(TestCase, DummyPackage):
     """
     A class for testing the DummyPackage class and its functionality.
 
@@ -28,13 +27,8 @@ class DummyPackageTester(DummyPackage):
         """
         super().__init__(package_name, requirements, temp_dir)
 
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        """
-         Context manager exit method.
-         Uninstalls the dummy package and its optional dependencies, and cleans up temporary directory.
-        """
-        assert self.uninstall_tester()
-        shutil.rmtree(self.temp_dir)
+    def setUp(self) -> None:
+        self.v = setup_with_context_manager(self, DummyPackage)
 
     def install_tester(self):
         """
@@ -69,3 +63,10 @@ class DummyPackageTester(DummyPackage):
             return not main_module and not dep_modules
         except ImportError:
             return True
+
+
+def setup_with_context_manager(testcase, cm):
+    """Use a contextmanager to setUp a test case."""
+    val = cm.__enter__()
+    testcase.addCleanup(cm.__exit__, None, None, None)
+    return val
