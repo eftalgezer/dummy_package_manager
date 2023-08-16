@@ -7,6 +7,7 @@ dependencies.
 import os.path
 import tempfile
 import shutil
+from pathlib import Path
 from subprocess import Popen, PIPE
 from shlex import split
 
@@ -123,7 +124,7 @@ class DummyPackage:
         for deps in self.package["deps"]:
             index = self.package["deps"].index(deps)
             with Popen(
-                    split(f"python -m pip install {deps['source_dir']} --no-input --no-dependencies"),
+                    split(f"python -m pip install {Path(deps['source_dir'])} --no-input --no-dependencies"),
                     stdout=PIPE
             ) as command:
                 self.package["deps"][index]["is_installed"] = \
@@ -131,7 +132,7 @@ class DummyPackage:
             if not self.package["deps"][index]["is_installed"]:
                 raise ImportError(f"{deps['name']} could not be installed")
         with Popen(
-                split(f"python -m pip install {self.package['source_dir']} --no-input --no-dependencies"),
+                split(f"python -m pip install {Path(self.package['source_dir'])} --no-input --no-dependencies"),
                 stdout=PIPE
         ) as command:
             self.package["is_installed"] = \
