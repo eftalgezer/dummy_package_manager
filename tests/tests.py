@@ -37,6 +37,9 @@ def test_DummyPackage():
         tester.install_tester()
         assert tester.package["is_installed"]
     __exit___tester(tester)
+
+
+def test_DummyPackage__errors():
     tester = DummyPackageTester("package1", requirements=["package2"])
     with tester:
         assert tester.package
