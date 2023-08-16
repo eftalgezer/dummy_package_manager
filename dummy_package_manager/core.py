@@ -1,12 +1,12 @@
 """
 This module provides the DummyPackage class which allows creating and managing dummy Python packages with optional
 dependencies.
-
 """
 
-import os.path
+import os
 import tempfile
 import shutil
+from pathlib import Path
 from subprocess import Popen, PIPE
 from shlex import split
 
@@ -78,15 +78,9 @@ class DummyPackage:
         }
         for dep in package["deps"]:
             index = package["deps"].index(dep)
-            package["deps"][index]["source_dir"] = os.path.join(self.temp_dir, os.sep, dep["name"])
-            os.makedirs(os.path.join(package["deps"][index]["source_dir"], os.sep, dep["name"]))
-            init_file = os.path.join(
-                package["deps"][index]["source_dir"],
-                os.sep,
-                dep["name"],
-                os.sep,
-                "__init__.py"
-            )
+            package["deps"][index]["source_dir"] = self.temp_dir / dep["name"]
+            os.makedirs(package["deps"][index]["source_dir"] / dep["name"])
+            init_file = package["deps"][index]["source_dir"] / dep["name"] / "__init__.py"
             with open(init_file, "w", encoding="utf-8"):
                 pass
             setup_content = "from setuptools import setup, find_packages\n\n" \
@@ -96,12 +90,12 @@ class DummyPackage:
                             f"    packages=['{dep['name']}'],\n" \
                             "    install_requires=[]\n" \
                             ")\n"
-            setup_file = os.path.join(package["deps"][index]["source_dir"], os.sep, "setup.py")
+            setup_file = package["deps"][index]["source_dir"] / "setup.py"
             with open(setup_file, "w") as f:
                 f.write(setup_content)
-        package["source_dir"] = os.path.join(self.temp_dir, package["name"])
-        os.makedirs(os.path.join(package["source_dir"], package["name"]))
-        init_file = os.path.join(package["source_dir"], package["name"], "__init__.py")
+        package["source_dir"] = self.temp_dir / package["name"]
+        os.makedirs(package["source_dir"] / package["name"])
+        init_file = package["source_dir"] / package["name"] / "__init__.py"
         with open(init_file, "w", encoding="utf-8"):
             pass
         setup_content = "from setuptools import setup, find_packages\n\n" \
@@ -111,7 +105,7 @@ class DummyPackage:
                         f"    packages=['{package['name']}'],\n" \
                         f"    install_requires={self.requirements if self.requirements else []}\n" \
                         ")\n"
-        setup_file = os.path.join(package["source_dir"], os.sep, "setup.py")
+        setup_file = package["source_dir"] / "setup.py"
         with open(setup_file, "w") as f:
             f.write(setup_content)
         return package

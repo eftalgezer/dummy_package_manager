@@ -4,7 +4,7 @@
 [![Python package](https://github.com/eftalgezer/dummy_package_manager/actions/workflows/python-package.yml/badge.svg)](https://github.com/eftalgezer/dummy_package_manager/actions/workflows/python-package.yml)
 [![Check requirements](https://github.com/eftalgezer/dummy_package_manager/actions/workflows/check_requirements/yml/badge.svg)](https://github.com/eftalgezer/dummy_package_manager/actions/workflows/check_requirements.yml)
 [![codecov](https://codecov.io/gh/eftalgezer/dummy_package_manager/branch/main/graph/badge.svg?token=Q9TJFIN1U1)](https://codecov.io/gh/eftalgezer/dummy_package_manager)
-[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/f0c0e8e9cf6a4151ac39bbad05e3c535)](https://app.codacy.com/gh/eftalgezer/dummy_package_manager/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage)
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/36a170ba82d644bd936095d60b097572)](https://app.codacy.com/gh/eftalgezer/dummy_package_manager/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage)
 [![PyPI download month](https://img.shields.io/pypi/dm/dummy_package_manager.svg)](https://pypi.python.org/pypi/dummy_package_manager/)
 [![PyPI download week](https://img.shields.io/pypi/dw/dummy_package_manager.svg)](https://pypi.python.org/pypi/dummy_package_manager/)
 [![PyPI download day](https://img.shields.io/pypi/dd/dummy_package_manager.svg)](https://pypi.python.org/pypi/dummy_package_manager/)
