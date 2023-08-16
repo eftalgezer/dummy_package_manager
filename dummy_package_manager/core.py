@@ -152,7 +152,11 @@ class DummyPackage:
                     if self.package["deps"][index]["is_installed"] or command.stderr.read().decode("utf-8"):
                         raise ImportError(f"{deps['name']} could not be uninstalled")
         if self.package["is_installed"]:
-            with Popen(split(f"python -m pip uninstall {self.package['name']} --yes"), stdout=PIPE, stderr=PIPE) as command:
+            with Popen(
+                    split(f"python -m pip uninstall {self.package['name']} --yes"),
+                    stdout=PIPE,
+                    stderr=PIPE
+            ) as command:
                 self.package["is_installed"] = \
                     f"Successfully uninstalled {self.package['name']}" not in command.stdout.read().decode("utf-8")
                 if self.package["is_installed"] or command.stderr.read().decode("utf-8"):
