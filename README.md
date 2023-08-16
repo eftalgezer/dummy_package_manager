@@ -50,7 +50,7 @@ from dummy_package_manager import DummyPackage
 with DummyPackage("my_package", requirements=["dependency1", "dependency2"]) as dummy_pkg:
     dummy_pkg.install()
     # Your code using the dummy package
-    dummy_pkg.uninstall()
+    dummy_pkg.uninstall() # not necessary when exiting the context manager
 ```
 
 ## Unit Tests
