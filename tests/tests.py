@@ -54,20 +54,22 @@ def test_DummyPackage():
         with TestCase().assertRaises(ImportError):
             tester.install_tester()
     tester = DummyPackageTester("package1", requirements=["package2"])
-    with tester:
-        assert tester.package
-        assert tester.package["name"] == "package1"
-        assert tester.package["deps"][0]["name"] == "package2"
-        tester.install_tester()
-        with Popen(split(f"python -m pip uninstall {tester.package['deps'][0]['name']} --yes")):
-            with TestCase().assertRaises(ImportError):
-                tester.uninstall_tester()
+    with TestCase().assertRaises(ImportError):
+        with tester:
+            assert tester.package
+            assert tester.package["name"] == "package1"
+            assert tester.package["deps"][0]["name"] == "package2"
+            tester.install_tester()
+            with Popen(split(f"python -m pip uninstall {tester.package['deps'][0]['name']} --yes")):
+                with TestCase().assertRaises(ImportError):
+                    tester.uninstall_tester()
     tester = DummyPackageTester("package1", requirements=["package2"])
-    with tester:
-        assert tester.package
-        assert tester.package["name"] == "package1"
-        assert tester.package["deps"][0]["name"] == "package2"
-        tester.install_tester()
-        with Popen(split(f"python -m pip uninstall {tester.package['name']} --yes")):
-            with TestCase().assertRaises(ImportError):
-                tester.uninstall_tester()
+    with TestCase().assertRaises(ImportError):
+        with tester:
+            assert tester.package
+            assert tester.package["name"] == "package1"
+            assert tester.package["deps"][0]["name"] == "package2"
+            tester.install_tester()
+            with Popen(split(f"python -m pip uninstall {tester.package['name']} --yes")):
+                with TestCase().assertRaises(ImportError):
+                    tester.uninstall_tester()
