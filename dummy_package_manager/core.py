@@ -35,7 +35,7 @@ class DummyPackage:
             requirements = []
         self.package_name = package_name
         self.requirements = requirements
-        self.temp_dir = Path(temp_dir)
+        self.temp_dir = Path(temp_dir) if temp_dir else temp_dir
         self.package = None
 
     def __enter__(self):
