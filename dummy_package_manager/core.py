@@ -7,7 +7,6 @@ dependencies.
 import os.path
 import tempfile
 import shutil
-from pathlib import Path
 from subprocess import Popen, PIPE
 from shlex import split
 
@@ -80,7 +79,6 @@ class DummyPackage:
         for dep in package["deps"]:
             index = package["deps"].index(dep)
             package["deps"][index]["source_dir"] = os.path.join(self.temp_dir, dep["name"])
-            print(package["deps"][index]["source_dir"])
             os.makedirs(os.path.join(package["deps"][index]["source_dir"], dep["name"]))
             init_file = os.path.join(
                 package["deps"][index]["source_dir"],
@@ -100,7 +98,6 @@ class DummyPackage:
             with open(setup_file, "w") as f:
                 f.write(setup_content)
         package["source_dir"] = os.path.join(self.temp_dir, package["name"])
-        print(package["source_dir"])
         os.makedirs(os.path.join(package["source_dir"], package["name"]))
         init_file = os.path.join(package["source_dir"], package["name"], "__init__.py")
         with open(init_file, "w", encoding="utf-8"):
@@ -124,7 +121,7 @@ class DummyPackage:
         for deps in self.package["deps"]:
             index = self.package["deps"].index(deps)
             with Popen(
-                    split(f"python -m pip install {Path(deps['source_dir'])} --no-input --no-dependencies"),
+                    split(f"python -m pip install \"{deps['source_dir']}\" --no-input --no-dependencies"),
                     stdout=PIPE
             ) as command:
                 self.package["deps"][index]["is_installed"] = \
@@ -132,7 +129,7 @@ class DummyPackage:
             if not self.package["deps"][index]["is_installed"]:
                 raise ImportError(f"{deps['name']} could not be installed")
         with Popen(
-                split(f"python -m pip install {Path(self.package['source_dir'])} --no-input --no-dependencies"),
+                split(f"python -m pip install \"{self.package['source_dir']}\" --no-input --no-dependencies"),
                 stdout=PIPE
         ) as command:
             self.package["is_installed"] = \
