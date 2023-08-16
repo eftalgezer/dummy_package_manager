@@ -5,11 +5,11 @@ from __future__ import absolute_import
 import os
 from setuptools import setup
 
-HERE = os.getcwd().replace("{0}setup.py".format(os.sep), "")
+HERE = os.getcwd().replace(f"{os.sep}setup.py", "")
 
 LONG_DESCRIPTION = ""
 
-with open("{0}{1}README.md".format(HERE, os.sep), "r", encoding="utf-8") as readme:
+with open(f"{HERE}{os.sep}README.md", "r", encoding="utf-8") as readme:
     LONG_DESCRIPTION = readme.read()
 
 setup(

@@ -95,8 +95,8 @@ class DummyPackage:
                             "    install_requires=[]\n" \
                             ")\n"
             setup_file = os.path.join(package["deps"][index]["source_dir"], "setup.py")
-            with open(setup_file, "w") as f:
-                f.write(setup_content)
+            with open(setup_file, "w", encoding="utf-8") as file:
+                file.write(setup_content)
         package["source_dir"] = os.path.join(self.temp_dir, package["name"])
         os.makedirs(os.path.join(package["source_dir"], package["name"]))
         init_file = os.path.join(package["source_dir"], package["name"], "__init__.py")
@@ -110,8 +110,8 @@ class DummyPackage:
                         f"    install_requires={self.requirements if self.requirements else []}\n" \
                         ")\n"
         setup_file = os.path.join(package["source_dir"], "setup.py")
-        with open(setup_file, "w") as f:
-            f.write(setup_content)
+        with open(setup_file, "w", encoding="utf-8") as file:
+            file.write(setup_content)
         return package
 
     def install(self):
