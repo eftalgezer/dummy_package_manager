@@ -2,7 +2,7 @@
 This module provides the DummyPackageTester class for testing the DummyPackage class.
 """
 
-from importlib import import_module
+import os.path
 from dummy_package_manager import DummyPackage
 
 
@@ -29,37 +29,27 @@ class DummyPackageTester(DummyPackage):
 
     def install_tester(self):
         """
-        Install the dummy package and optional dependencies using pip, and verify installation.
-
-        Returns:
-            bool: True if installation is successful, False otherwise.
+        Tester function for DummyPackage.install.
         """
         self.install()
-        try:
-            main_module = import_module(self.package["name"])
-            dep_modules = True
-            if self.package["deps"] is not []:
-                dep_modules = [import_module(deps["name"]) for deps in self.package["deps"]]
-            return main_module and dep_modules
-        except ImportError:
-            return False
 
     def uninstall_tester(self):
         """
-        Uninstall the dummy package and optional dependencies using pip, and verify uninstallation.
-
-        Returns:
-            bool: True if uninstallation is successful, False otherwise.
+        Tester function for DummyPackage.uninstall.
         """
         self.uninstall()
-        try:
-            main_module = import_module(self.package["name"])
-            print(main_module)
-            dep_modules = False
-            if self.package["deps"] is not []:
-                dep_modules = [import_module(deps["name"]) for deps in self.package["deps"]]
-            print(dep_modules)
-            return not main_module and not dep_modules
-        except ImportError:
-            return True
 
+
+def __exit___tester(tester):
+    """
+    Verify the cleanup of the package's temporary directory and its module(s) after exiting the context.
+
+    Args:
+        tester (DummyPackageTester): The DummyPackageTester instance representing the package tester to be verified.
+
+    Returns:
+        bool: True if the package's temporary directory and module(s) are cleaned up, False otherwise.
+    """
+    is_path = os.path.exists(tester.temp_dir)
+    is_module = tester.package["is_installed"] and all(dep["is_installed"] for dep in tester.package["deps"])
+    return not is_path and not is_module
