@@ -28,14 +28,14 @@ class DummyPackage:
         Args:
             package_name (str): The name of the dummy package.
             requirements (list): A list of package names for optional dependencies.
-            temp_dir (str, optional): Temporary directory path to use for package creation.
+            temp_dir (Path, optional): Temporary directory path to use for package creation.
                                       If not provided, a temporary directory will be created.
         """
         if not requirements:
             requirements = []
         self.package_name = package_name
         self.requirements = requirements
-        self.temp_dir = temp_dir
+        self.temp_dir = Path(temp_dir)
         self.package = None
 
     def __enter__(self):
@@ -44,7 +44,7 @@ class DummyPackage:
         Creates the dummy package and its optional dependencies if any.
         """
         if self.temp_dir is None:
-            self.temp_dir = tempfile.mkdtemp()
+            self.temp_dir = Path(tempfile.mkdtemp())
         self.package = self._create_dummy_package()
         return self
 
