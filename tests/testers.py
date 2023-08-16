@@ -36,6 +36,7 @@ class DummyPackageTester(DummyPackage):
     def uninstall_tester(self):
         """
         Tester function for DummyPackage.uninstall.
+        Tester function for DummyPackage.uninstall.
         """
         self.uninstall()
 
