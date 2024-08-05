@@ -18,7 +18,7 @@ pytest == 7.4.0; sys_platform == linux and python_version == 3.7
       typing_extensions == 4.7.1; sys_platform == linux and python_version == 3.7
       zipp == 3.15.0; sys_platform == linux and python_version == 3.7
   tomli == 2.0.1; sys_platform == linux and python_version == 3.7
-setuptools == 68.0.0; sys_platform == linux and python_version == 3.7
+setuptools >= 70.0.0; sys_platform == linux and python_version == 3.7
 pip == 23.2.1; sys_platform == linux and python_version == 3.8
 flake8 == 6.1.0; sys_platform == linux and python_version == 3.8
   mccabe == 0.7.0; sys_platform == linux and python_version == 3.8
@@ -95,7 +95,7 @@ pytest == 7.4.0; sys_platform == darwin and python_version == 3.7
       typing_extensions == 4.7.1; sys_platform == darwin and python_version == 3.7
       zipp == 3.15.0; sys_platform == darwin and python_version == 3.7
   tomli == 2.0.1; sys_platform == darwin and python_version == 3.7
-setuptools == 68.0.0; sys_platform == darwin and python_version == 3.7
+setuptools >= 70.0.0; sys_platform == darwin and python_version == 3.7
 pip == 23.2.1; sys_platform == darwin and python_version == 3.8
 flake8 == 6.1.0; sys_platform == darwin and python_version == 3.8
   mccabe == 0.7.0; sys_platform == darwin and python_version == 3.8
@@ -175,7 +175,7 @@ pytest == 7.4.0; sys_platform == win32 and python_version == 3.7
       typing_extensions == 4.7.1; sys_platform == win32 and python_version == 3.7
       zipp == 3.15.0; sys_platform == win32 and python_version == 3.7
   tomli == 2.0.1; sys_platform == win32 and python_version == 3.7
-setuptools == 68.0.0; sys_platform == win32 and python_version == 3.7
+setuptools >= 70.0.0; sys_platform == win32 and python_version == 3.7
 pip == 23.2.1; sys_platform == win32 and python_version == 3.8
 flake8 == 6.1.0; sys_platform == win32 and python_version == 3.8
   mccabe == 0.7.0; sys_platform == win32 and python_version == 3.8
