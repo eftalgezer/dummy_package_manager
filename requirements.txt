@@ -132,7 +132,7 @@ pytest == 7.4.0; sys_platform == darwin and python_version == 3.10
   pluggy == 1.2.0; sys_platform == darwin and python_version == 3.10
   tomli == 2.0.1; sys_platform == darwin and python_version == 3.10
 setuptools == 68.1.0; sys_platform == darwin and python_version == 3.10
-certifi == 2023.7.22; sys_platform == darwin and python_version == 3.11
+certifi >= 2024.07.04; sys_platform == darwin and python_version == 3.11
 pip >= 23.3; sys_platform == darwin and python_version == 3.11
 flake8 == 6.1.0; sys_platform == darwin and python_version == 3.11
   mccabe == 0.7.0; sys_platform == darwin and python_version == 3.11
@@ -143,7 +143,7 @@ pytest == 7.4.0; sys_platform == darwin and python_version == 3.11
   packaging == 23.1; sys_platform == darwin and python_version == 3.11
   pluggy == 1.2.0; sys_platform == darwin and python_version == 3.11
 setuptools == 68.1.0; sys_platform == darwin and python_version == 3.11
-certifi == 2023.7.22; sys_platform == darwin and python_version == 3.12
+certifi >= 2024.07.04; sys_platform == darwin and python_version == 3.12
 pip >= 23.3; sys_platform == darwin and python_version == 3.12
 flake8 == 6.1.0; sys_platform == darwin and python_version == 3.12
   mccabe == 0.7.0; sys_platform == darwin and python_version == 3.12
