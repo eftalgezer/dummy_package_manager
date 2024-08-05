@@ -1,4 +1,4 @@
-pip == 23.2.1; sys_platform == linux and python_version == 3.7
+pip >= 23.3; sys_platform == linux and python_version == 3.7
 flake8 == 5.0.4; sys_platform == linux and python_version == 3.7
   importlib-metadata == 4.2.0; sys_platform == linux and python_version == 3.7
     typing_extensions == 4.7.1; sys_platform == linux and python_version == 3.7
@@ -19,7 +19,7 @@ pytest == 7.4.0; sys_platform == linux and python_version == 3.7
       zipp >= 3.19.1; sys_platform == linux and python_version == 3.7
   tomli == 2.0.1; sys_platform == linux and python_version == 3.7
 setuptools >= 70.0.0; sys_platform == linux and python_version == 3.7
-pip == 23.2.1; sys_platform == linux and python_version == 3.8
+pip >= 23.3; sys_platform == linux and python_version == 3.8
 flake8 == 6.1.0; sys_platform == linux and python_version == 3.8
   mccabe == 0.7.0; sys_platform == linux and python_version == 3.8
   pycodestyle == 2.11.0; sys_platform == linux and python_version == 3.8
@@ -31,7 +31,7 @@ pytest == 7.4.0; sys_platform == linux and python_version == 3.8
   pluggy == 1.2.0; sys_platform == linux and python_version == 3.8
   tomli == 2.0.1; sys_platform == linux and python_version == 3.8
 setuptools == 68.1.0; sys_platform == linux and python_version == 3.8
-pip == 23.2.1; sys_platform == linux and python_version == 3.9
+pip >= 23.3; sys_platform == linux and python_version == 3.9
 flake8 == 6.1.0; sys_platform == linux and python_version == 3.9
   mccabe == 0.7.0; sys_platform == linux and python_version == 3.9
   pycodestyle == 2.11.0; sys_platform == linux and python_version == 3.9
@@ -43,7 +43,7 @@ pytest == 7.4.0; sys_platform == linux and python_version == 3.9
   pluggy == 1.2.0; sys_platform == linux and python_version == 3.9
   tomli == 2.0.1; sys_platform == linux and python_version == 3.9
 setuptools == 68.1.0; sys_platform == linux and python_version == 3.9
-pip == 23.2.1; sys_platform == linux and python_version == 3.10
+pip >= 23.3; sys_platform == linux and python_version == 3.10
 flake8 == 6.1.0; sys_platform == linux and python_version == 3.10
   mccabe == 0.7.0; sys_platform == linux and python_version == 3.10
   pycodestyle == 2.11.0; sys_platform == linux and python_version == 3.10
@@ -65,7 +65,7 @@ pytest == 7.4.0; sys_platform == linux and python_version == 3.11
   packaging == 23.1; sys_platform == linux and python_version == 3.11
   pluggy == 1.2.0; sys_platform == linux and python_version == 3.11
 setuptools == 68.1.0; sys_platform == linux and python_version == 3.11
-pip == 23.2.1; sys_platform == linux and python_version == 3.12
+pip >= 23.3; sys_platform == linux and python_version == 3.12
 flake8 == 6.1.0; sys_platform == linux and python_version == 3.12
   mccabe == 0.7.0; sys_platform == linux and python_version == 3.12
   pycodestyle == 2.11.0; sys_platform == linux and python_version == 3.12
@@ -75,7 +75,7 @@ pytest == 7.4.0; sys_platform == linux and python_version == 3.12
   packaging == 23.1; sys_platform == linux and python_version == 3.12
   pluggy == 1.2.0; sys_platform == linux and python_version == 3.12
 setuptools == 68.1.0; sys_platform == linux and python_version == 3.12
-pip == 23.2.1; sys_platform == darwin and python_version == 3.7
+pip >= 23.3; sys_platform == darwin and python_version == 3.7
 flake8 == 5.0.4; sys_platform == darwin and python_version == 3.7
   importlib-metadata == 4.2.0; sys_platform == darwin and python_version == 3.7
     typing_extensions == 4.7.1; sys_platform == darwin and python_version == 3.7
@@ -96,7 +96,7 @@ pytest == 7.4.0; sys_platform == darwin and python_version == 3.7
       zipp >= 3.19.1; sys_platform == darwin and python_version == 3.7
   tomli == 2.0.1; sys_platform == darwin and python_version == 3.7
 setuptools >= 70.0.0; sys_platform == darwin and python_version == 3.7
-pip == 23.2.1; sys_platform == darwin and python_version == 3.8
+pip >= 23.3; sys_platform == darwin and python_version == 3.8
 flake8 == 6.1.0; sys_platform == darwin and python_version == 3.8
   mccabe == 0.7.0; sys_platform == darwin and python_version == 3.8
   pycodestyle == 2.11.0; sys_platform == darwin and python_version == 3.8
@@ -108,7 +108,7 @@ pytest == 7.4.0; sys_platform == darwin and python_version == 3.8
   pluggy == 1.2.0; sys_platform == darwin and python_version == 3.8
   tomli == 2.0.1; sys_platform == darwin and python_version == 3.8
 setuptools == 68.1.0; sys_platform == darwin and python_version == 3.8
-pip == 23.2.1; sys_platform == darwin and python_version == 3.9
+pip >= 23.3; sys_platform == darwin and python_version == 3.9
 flake8 == 6.1.0; sys_platform == darwin and python_version == 3.9
   mccabe == 0.7.0; sys_platform == darwin and python_version == 3.9
   pycodestyle == 2.11.0; sys_platform == darwin and python_version == 3.9
@@ -120,7 +120,7 @@ pytest == 7.4.0; sys_platform == darwin and python_version == 3.9
   pluggy == 1.2.0; sys_platform == darwin and python_version == 3.9
   tomli == 2.0.1; sys_platform == darwin and python_version == 3.9
 setuptools == 68.1.0; sys_platform == darwin and python_version == 3.9
-pip == 23.2.1; sys_platform == darwin and python_version == 3.10
+pip >= 23.3; sys_platform == darwin and python_version == 3.10
 flake8 == 6.1.0; sys_platform == darwin and python_version == 3.10
   mccabe == 0.7.0; sys_platform == darwin and python_version == 3.10
   pycodestyle == 2.11.0; sys_platform == darwin and python_version == 3.10
@@ -133,7 +133,7 @@ pytest == 7.4.0; sys_platform == darwin and python_version == 3.10
   tomli == 2.0.1; sys_platform == darwin and python_version == 3.10
 setuptools == 68.1.0; sys_platform == darwin and python_version == 3.10
 certifi == 2023.7.22; sys_platform == darwin and python_version == 3.11
-pip == 23.2.1; sys_platform == darwin and python_version == 3.11
+pip >= 23.3; sys_platform == darwin and python_version == 3.11
 flake8 == 6.1.0; sys_platform == darwin and python_version == 3.11
   mccabe == 0.7.0; sys_platform == darwin and python_version == 3.11
   pycodestyle == 2.11.0; sys_platform == darwin and python_version == 3.11
@@ -144,7 +144,7 @@ pytest == 7.4.0; sys_platform == darwin and python_version == 3.11
   pluggy == 1.2.0; sys_platform == darwin and python_version == 3.11
 setuptools == 68.1.0; sys_platform == darwin and python_version == 3.11
 certifi == 2023.7.22; sys_platform == darwin and python_version == 3.12
-pip == 23.2.1; sys_platform == darwin and python_version == 3.12
+pip >= 23.3; sys_platform == darwin and python_version == 3.12
 flake8 == 6.1.0; sys_platform == darwin and python_version == 3.12
   mccabe == 0.7.0; sys_platform == darwin and python_version == 3.12
   pycodestyle == 2.11.0; sys_platform == darwin and python_version == 3.12
@@ -154,7 +154,7 @@ pytest == 7.4.0; sys_platform == darwin and python_version == 3.12
   packaging == 23.1; sys_platform == darwin and python_version == 3.12
   pluggy == 1.2.0; sys_platform == darwin and python_version == 3.12
 setuptools == 68.1.0; sys_platform == darwin and python_version == 3.12
-pip == 23.2.1; sys_platform == win32 and python_version == 3.7
+pip >= 23.3; sys_platform == win32 and python_version == 3.7
 flake8 == 5.0.4; sys_platform == win32 and python_version == 3.7
   importlib-metadata == 4.2.0; sys_platform == win32 and python_version == 3.7
     typing_extensions == 4.7.1; sys_platform == win32 and python_version == 3.7
@@ -176,7 +176,7 @@ pytest == 7.4.0; sys_platform == win32 and python_version == 3.7
       zipp >= 3.19.1; sys_platform == win32 and python_version == 3.7
   tomli == 2.0.1; sys_platform == win32 and python_version == 3.7
 setuptools >= 70.0.0; sys_platform == win32 and python_version == 3.7
-pip == 23.2.1; sys_platform == win32 and python_version == 3.8
+pip >= 23.3; sys_platform == win32 and python_version == 3.8
 flake8 == 6.1.0; sys_platform == win32 and python_version == 3.8
   mccabe == 0.7.0; sys_platform == win32 and python_version == 3.8
   pycodestyle == 2.11.0; sys_platform == win32 and python_version == 3.8
@@ -189,7 +189,7 @@ pytest == 7.4.0; sys_platform == win32 and python_version == 3.8
   pluggy == 1.2.0; sys_platform == win32 and python_version == 3.8
   tomli == 2.0.1; sys_platform == win32 and python_version == 3.8
 setuptools == 68.1.0; sys_platform == win32 and python_version == 3.8
-pip == 23.2.1; sys_platform == win32 and python_version == 3.9
+pip >= 23.3; sys_platform == win32 and python_version == 3.9
 flake8 == 6.1.0; sys_platform == win32 and python_version == 3.9
   mccabe == 0.7.0; sys_platform == win32 and python_version == 3.9
   pycodestyle == 2.11.0; sys_platform == win32 and python_version == 3.9
@@ -209,7 +209,7 @@ pytest == 7.4.0; sys_platform == win32 and python_version == 3.9
   pluggy == 1.2.0; sys_platform == win32 and python_version == 3.9
   tomli == 2.0.1; sys_platform == win32 and python_version == 3.9
 setuptools == 68.1.0; sys_platform == win32 and python_version == 3.9
-pip == 23.2.1; sys_platform == win32 and python_version == 3.10
+pip >= 23.3; sys_platform == win32 and python_version == 3.10
 flake8 == 6.1.0; sys_platform == win32 and python_version == 3.10
   mccabe == 0.7.0; sys_platform == win32 and python_version == 3.10
   pycodestyle == 2.11.0; sys_platform == win32 and python_version == 3.10
@@ -222,7 +222,7 @@ pytest == 7.4.0; sys_platform == win32 and python_version == 3.10
   pluggy == 1.2.0; sys_platform == win32 and python_version == 3.10
   tomli == 2.0.1; sys_platform == win32 and python_version == 3.10
 setuptools == 68.1.0; sys_platform == win32 and python_version == 3.10
-pip == 23.2.1; sys_platform == win32 and python_version == 3.11
+pip >= 23.3; sys_platform == win32 and python_version == 3.11
 flake8 == 6.1.0; sys_platform == win32 and python_version == 3.11
   mccabe == 0.7.0; sys_platform == win32 and python_version == 3.11
   pycodestyle == 2.11.0; sys_platform == win32 and python_version == 3.11
@@ -233,7 +233,7 @@ pytest == 7.4.0; sys_platform == win32 and python_version == 3.11
   packaging == 23.1; sys_platform == win32 and python_version == 3.11
   pluggy == 1.2.0; sys_platform == win32 and python_version == 3.11
 setuptools == 68.1.0; sys_platform == win32 and python_version == 3.11
-pip == 23.2.1; sys_platform == win32 and python_version == 3.12
+pip >= 23.3; sys_platform == win32 and python_version == 3.12
 flake8 == 6.1.0; sys_platform == win32 and python_version == 3.12
   mccabe == 0.7.0; sys_platform == win32 and python_version == 3.12
   pycodestyle == 2.11.0; sys_platform == win32 and python_version == 3.12
