@@ -42,8 +42,8 @@ jobs:
     - name: Check missing requirements
       if: always()
       run: |
-            check_requirements -cm requirements.txt -rme -ip "check-requirements" "pipdeptree" "dummy-package-manager"
+            check_requirements -cm -f requirements.txt -rme -ip "check-requirements" "pipdeptree" "dummy-package-manager"
     - name: Check extra requirements
       if: always()
       run: |
-            check_requirements -ce requirements.txt -ree -ip "check-requirements" "pipdeptree" "dummy-package-manager"
+            check_requirements -ce -f requirements.txt -ree -ip "check-requirements" "pipdeptree" "dummy-package-manager"
